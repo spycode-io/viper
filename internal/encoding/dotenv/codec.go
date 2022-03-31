@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"sort"
-	"strings"
 
 	"github.com/subosito/gotenv"
 )
@@ -31,7 +30,8 @@ func (Codec) Encode(v map[string]interface{}) ([]byte, error) {
 	var buf bytes.Buffer
 
 	for _, key := range keys {
-		_, err := buf.WriteString(fmt.Sprintf("%v=%v\n", strings.ToUpper(key), flattened[key]))
+		//_, err := buf.WriteString(fmt.Sprintf("%v=%v\n", strings.ToUpper(key), flattened[key]))
+		_, err := buf.WriteString(fmt.Sprintf("%v=%v\n", key, flattened[key]))
 		if err != nil {
 			return nil, err
 		}
